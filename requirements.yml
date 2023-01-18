@@ -1,0 +1,4 @@
+---
+roles:
+  # https://github.com/geerlingguy/ansible-role-dotfiles
+  - name: geerlingguy.dotfiles

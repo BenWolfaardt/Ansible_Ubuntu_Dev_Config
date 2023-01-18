@@ -1,0 +1,16 @@
+---
+- name: Configure Ubuntu
+  
+  hosts: localhost
+  
+  vars_files:
+    - defaults.config.yml
+
+  roles:
+    - role: zsh
+      tags: [zsh]
+    - role: geerlingguy.dotfiles
+      when: configure_dotfiles
+      tags: ['dotfiles']
+    - role: homebrew
+      tags: ["homebrew"]
