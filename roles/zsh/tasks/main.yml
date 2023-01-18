@@ -1,0 +1,8 @@
+---
+- name: Install zsh
+  shell: sudo apt install zsh -y
+  
+- name: Install oh-my-zsh and set as default shell
+  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
