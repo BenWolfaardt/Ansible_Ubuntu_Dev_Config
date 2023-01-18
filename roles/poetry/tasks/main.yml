@@ -1,0 +1,9 @@
+---
+- name: Install poetry
+  shell: curl -sSL https://install.python-poetry.org | python3 -
+
+- name: Add poetry to path
+  shell: |
+    echo '\n' >> /home/ben/.zshrc
+    echo '# Set PATH for Poetry.' >> /home/ben/.zshrc
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> /home/ben/.zshrc
