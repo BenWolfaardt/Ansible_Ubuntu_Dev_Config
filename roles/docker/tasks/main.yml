@@ -1,0 +1,41 @@
+---
+# - name: Docker Desktop prerequisites
+#   shell: |
+#     sudo apt-get update
+#     sudo apt-get install ca-certificates curl gnupg lsb-release
+#   become: true
+
+# - name: Add Docker’s official GPG key
+#   shell: |
+#     sudo mkdir -p /etc/apt/keyrings
+#     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+#   # TODO: The above line requires the user  to hit enter, bypass this step
+
+# - name: Set up the repository
+#   shell: >
+#     echo 
+#     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+#     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# TODO specify the version dynamically: <version>-<arch>
+# - name: Download Docker Desktop
+#   shell: wget https://desktop.docker.com/linux/main/amd64/docker-desktop-4.16.1-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64
+
+# - name: Rename package
+#   shell: mv docker-desktop-4.16.1-amd64.deb?utm_source=docker docker-desktop.deb
+
+# - name: Install Docker
+#   shell: sudo apt-get install ./docker-desktop.deb
+#   become: true
+
+# A big mess, see: 
+# - https://unix.stackexchange.com/questions/363048/unable-to-locate-package-docker-ce-on-a-64bit-ubuntu
+# - https://stackoverflow.com/questions/72299444/docker-desktop-doesnt-install-saying-docker-ce-cli-not-installable
+# - not used, but still look: https://askubuntu.com/questions/1337928/e-the-repository-https-download-docker-com-linux-debian-focal-release-does
+
+
+# - name: Enable Docker Desktop to start on login
+#   shell: systemctl --user enable docker-desktop
+
+# TODO: https://docs.docker.com/desktop/install/ubuntu/#upgrade-docker-desktop
+# - name: Upgrade Docker Desktop
