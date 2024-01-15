@@ -2,8 +2,13 @@
 - name: Install poetry
   shell: curl -sSL https://install.python-poetry.org | python3 -
 
+# Already in dotfiles: https://github.com/BenWolfaardt/Dotfiles
 - name: Add poetry to path
   shell: |
     echo '\n' >> /home/ben/.zshrc
     echo '# Set PATH for Poetry.' >> /home/ben/.zshrc
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> /home/ben/.zshrc
+
+# Add poetry to terminal config
+#   My dotfiles: https://github.com/BenWolfaardt/Dotfiles are automatically pulled with the 
+#   https://github.com/geerlingguy/ansible-role-dotfiles Ansible role
