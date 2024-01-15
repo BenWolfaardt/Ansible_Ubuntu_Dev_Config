@@ -1,21 +1,33 @@
 ---
-- name: Install pyenv
+- name: Python prerequisites
+  apt:
+    name:
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev 
+      - curl
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev 
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+    state: present
+  become: yes
+
+- name: Check if Pyenv is already installed
+  stat:
+    path: /home/ben/.pyenv
+  register: pyenv_dir
+
+- name: Install Pyenv
   shell: curl https://pyenv.run | bash
+  when: not pyenv_dir.stat.exists
 
-# Already in dotfiles: https://github.com/BenWolfaardt/Dotfiles
-# - name: Add pyenv path to .zshrc
-#   shell: |
-#     echo '\n' >> /home/ben/.zshrc
-#     echo '# Set PATH for pyenv.' >> /home/ben/.zshrc
-#     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-#     echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-#     echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-
-# Already in dotfiles: https://github.com/BenWolfaardt/Dotfiles
-# - name: Add pyenv to .zprofile
-#   shell: |
-#     echo '\n' >> /home/ben/.zprofile
-#     echo '# Set PATH for pyenv.' >> /home/ben/.zprofile
-#     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-#     echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-#     echo 'eval "$(pyenv init -)"' >> ~/.zprofile
+# Add pyenv to terminal config
+#   My dotfiles: https://github.com/BenWolfaardt/Dotfiles are automatically pulled with the 
+#   https://github.com/geerlingguy/ansible-role-dotfiles Ansible role
