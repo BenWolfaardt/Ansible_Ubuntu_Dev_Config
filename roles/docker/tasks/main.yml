@@ -1,41 +1,103 @@
 ---
-# - name: Docker Desktop prerequisites
-#   shell: |
-#     sudo apt-get update
-#     sudo apt-get install ca-certificates curl gnupg lsb-release
-#   become: true
+- name: Ensure old versions of Docker are not installed.
+  package:
+    name:
+      - docker
+      - docker.io
+      - docker-engine
+    state: absent
 
-# - name: Add Docker’s official GPG key
-#   shell: |
-#     sudo mkdir -p /etc/apt/keyrings
-#     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-#   # TODO: The above line requires the user  to hit enter, bypass this step
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600  # prevent redundant cache updates if the playbook is run multiple times
+  become: yes
 
-# - name: Set up the repository
-#   shell: >
-#     echo 
-#     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-#     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+- name: Docker Desktop prerequisites
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: present
+  become: yes
 
-# TODO specify the version dynamically: <version>-<arch>
-# - name: Download Docker Desktop
-#   shell: wget https://desktop.docker.com/linux/main/amd64/docker-desktop-4.16.1-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64
+- name: Ensure /etc/apt/keyrings directory exists
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
 
-# - name: Rename package
-#   shell: mv docker-desktop-4.16.1-amd64.deb?utm_source=docker docker-desktop.deb
+- name: Add Docker's official GPG key
+  shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  args:
+    creates: /etc/apt/keyrings/docker.gpg
+  become: yes
 
-# - name: Install Docker
-#   shell: sudo apt-get install ./docker-desktop.deb
-#   become: true
+- name: Set permissions for Docker GPG key
+  file:
+    path: /etc/apt/keyrings/docker.gpg
+    mode: a+r
 
-# A big mess, see: 
-# - https://unix.stackexchange.com/questions/363048/unable-to-locate-package-docker-ce-on-a-64bit-ubuntu
-# - https://stackoverflow.com/questions/72299444/docker-desktop-doesnt-install-saying-docker-ce-cli-not-installable
-# - not used, but still look: https://askubuntu.com/questions/1337928/e-the-repository-https-download-docker-com-linux-debian-focal-release-does
+# TODO check if this step works, had to run things manually to see what the issue was
+- name: Add Docker repository
+  shell: |
+    echo "deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list
+  args:
+    creates: /etc/apt/sources.list.d/docker.list
 
+- name: Update apt cache after adding Docker repository
+  apt:
+    update_cache: yes
+  become: yes
 
-# - name: Enable Docker Desktop to start on login
-#   shell: systemctl --user enable docker-desktop
+- name: Install Docker and related components
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+    update_cache: yes
+  become: yes
+
+# Download latest Docker .deb file
+- import_tasks: script.yml
+
+- name: Install Docker DEB package
+  apt:
+    deb: "/tmp/docker.deb"
+  become: yes
+
+- name: Allow running Docker without sudo
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+
+# https://github.com/LorenzoBettini/ansible-ubuntu-playbook/blob/master/tasks/docker.yml#L34-L51
+# Then, you have to explicitly start docker.service
+# systemctl start docker.service.
+# With service module, when running in Docker in molecule
+# we get this error FAILED! =>
+# "msg": "Could not find the requested service docker: host"
+# with systemd module instead it works
+- name: Do NOT enable service docker on boot
+  become: yes
+  ansible.builtin.systemd:
+    name: docker.service
+    enabled: no
+
+# This way, as soon as we run a docker command docker.service starts
+- name: Enable docker.socket on boot
+  become: yes
+  ansible.builtin.systemd:
+    name: docker.socket
+    enabled: yes
 
 # TODO: https://docs.docker.com/desktop/install/ubuntu/#upgrade-docker-desktop
 # - name: Upgrade Docker Desktop
