@@ -1,25 +1,26 @@
 ---
-#--------------Role: Homebrew --------------#
-homebrew_formulae:
-  # - ansible  # installed with bin/bootstrap command to make our lives easy
-  # - build-essential  # installed with bin/bootstrap command as it is a pre-requisite to brew
-  # - curl  # installed with bin/bootstrap command as it is a pre-requisite to brew
-  # - docker
-  # - docker-compose
-  # - file  # installed with bin/bootstrap command as it is a pre-requisite to brew
-  # - gcc  # installed with bin/bootstrap command as it is a recommended first step by brew
-  # - git  # installed with bin/bootstrap command as it is a pre-requisite to brew
+#--------------Role: default --------------#
+apt_packages:
+  # - apt-transport-https  # Required for VSCode # TODO: Test
+  - curl
+  - gh  # for `gh auth login`
+  - git
   - grep
   - htop
-  - openssl@1.1
-  - poetry
-  - postgresql@15
-  # - procps  # installed with bin/bootstrap command as it is a pre-requisite to brew
-  - pyenv
-  - pyenv-virtualenv
-  - python@3.11
-  - wget
-  # - zsh  # installed with bin/bootstrap command to make our lives easy
+  # - openssl@1.1
+  # - postgresql@15
+  - vim
+
+ppa_packages:
+  # - ppa:atareao/telegram
+  # - ppa:ubuntu-mozilla-security/ppa
+
+#--------------Role: vscode --------------#
+vscode_extensions:
+  - ms-azuretools.vscode-docker  # docker
+  - ms-python.python  # python
+  - ms-python.vscode-pylance  # pylance
+  - golang.go  # go
 
 #-------------- Role: geerlingguy.dotfiles --------------#
 # https://github.com/geerlingguy/ansible-role-dotfiles
