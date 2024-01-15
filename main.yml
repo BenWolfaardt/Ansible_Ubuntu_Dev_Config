@@ -1,16 +1,30 @@
 ---
 - name: Configure Ubuntu
-  
   hosts: localhost
   
   vars_files:
     - defaults.config.yml
 
   roles:
+    - role: default
+      tags: [default]
+    - role: docker
+      tags: [docker]
+    # TODO: finish implementing
+    # - role: nvm
+    #   tags: [nvm]
+    # pyenv and zsh are 
+    # pre-requisite - ./roles/poetry/meta/main.yml
+    - role: pyenv
+      tags: [pyenv]
+    - role: poetry  
+      tags: [poetry]
+    - role: stretchly
+      tags: [stretchly]
+    - role: vscode
+      tags: [vscode]
     - role: zsh
       tags: [zsh]
-    - role: geerlingguy.dotfiles
+    - role: geerlingguy.dotfiles  # pyenv needs to be installed first
       when: configure_dotfiles
       tags: ['dotfiles']
-    - role: homebrew
-      tags: ["homebrew"]
