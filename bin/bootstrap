@@ -1,28 +1,11 @@
 #!/bin/sh
-# Create directory and clone Ansible_Ubuntu_Dev_Config
-cd ~
-mkdir src
-cd src
-mkdir config
-cd config
-git clone https://github.com/BenWolfaardt/Ansible_Ubuntu_Dev_Config.git
-cd Ansible_Ubuntu_Dev_Config
-
-# Get things ready for Brew and install it
 sudo apt update && sudo apt dist-upgrade -y
-sudo apt-get install build-essential procps curl file git -y
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo '' >> /home/ben/.profile
-echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /home/ben/.profile
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/ben/.profile
+sudo apt-get install software-properties-common -y
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible -y
 
-sudo apt autoremove -y
-# TODO: eval incase autoremove breaks things
-# TODO: eval incase it brew isn't in the path
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# brew recommends this be installed
-brew install ansible gcc
+sudo apt autoremove -y  # may potentially break things
 
 ansible-galaxy install -r requirements.yml
-ansible-playbook -i "localhost," -c local main.yml --ask-become-pass
+ansible-playbook -i "localhost," -c local main.yml --ask-become-pass -v
