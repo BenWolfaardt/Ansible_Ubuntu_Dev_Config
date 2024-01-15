@@ -1,0 +1,12 @@
+---
+- name: Install default packages
+  apt:
+    name: "{{ apt_packages }}"
+    update_cache: yes
+  become: yes
+
+# TODO test this?
+# Install ppa apps
+# - apt_repository:
+#    repo: "{{ item }}"
+#  with_items: "{{ ppa_packages }}"

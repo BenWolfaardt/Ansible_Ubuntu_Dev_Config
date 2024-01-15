@@ -1,0 +1,22 @@
+---
+- name: Install NVM (Node Version Manager)
+  shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  args:
+    executable: /bin/bash
+  environment:
+    HOME: "{{ ansible_env.HOME }}"
+
+- name: Verify NVM installation
+  shell: |
+    . $HOME/.nvm/nvm.sh
+    command -v nvm
+  args:
+    executable: /bin/bash
+  register: nvm_check
+  changed_when: false
+
+- name: Check if NVM is installed
+  fail:
+    msg: "NVM installation failed."
+  when: nvm_check.stdout != 'nvm'

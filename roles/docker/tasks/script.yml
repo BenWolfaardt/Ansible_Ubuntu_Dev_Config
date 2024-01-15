@@ -1,0 +1,9 @@
+---
+- name: Install Python 3.12.1 with pyenv
+  shell: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv install 3.12.1"
+  args:
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/3.12.1"
+
+- name: Run the shell script to setup environment and download Docker
+  script: run_script.sh
+  become_user: "{{ ansible_user_id }}"

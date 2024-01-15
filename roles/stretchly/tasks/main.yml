@@ -1,0 +1,43 @@
+---
+- name: Add Stretchly repository
+  apt_repository:
+    repo: 'deb [trusted=yes] https://apt.fury.io/hovancik/ /'
+    filename: stretchly
+  become: yes
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600  # prevent redundant cache updates if the playbook is run multiple times
+  become: yes
+
+- name: Install Stretchly
+  apt:
+    name: stretchly
+    state: present
+  become: yes
+
+- name: Copy Stretchly configuration file
+  copy:
+    src: config.json
+    dest: /home/ben/.config/Stretchly/config.json
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0644'
+  become: yes
+
+- name: Ensure GNOME autostart directory exists
+  file:
+    path: "/home/{{ ansible_user_id }}/.config/autostart"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0755'
+
+- name: Copy Stretchly desktop entry for autostart
+  template:
+    src: stretchly.desktop.j2
+    dest: "/home/{{ ansible_user_id }}/.config/autostart/stretchly.desktop"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0644'
