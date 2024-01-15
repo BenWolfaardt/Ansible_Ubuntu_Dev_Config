@@ -17,6 +17,7 @@ ppa_packages:
 
 #--------------Role: vscode --------------#
 vscode_extensions:
+  - bungcip.better-toml  # toml linting
   - ms-azuretools.vscode-docker  # docker
   - ms-python.python  # python
   - ms-python.vscode-pylance  # pylance
