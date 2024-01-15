@@ -1,8 +1,23 @@
 ---
 - name: Install zsh
-  shell: sudo apt install zsh -y
-  
-- name: Install oh-my-zsh and set as default shell
-  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  apt:
+    name: zsh
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
+  become_user: "{{ ansible_user_id }}"
+  environment:
+    RUNZSH: 'no'
+    CHSH: 'no'
+
+# Note, requires reboot to take affect
+- name: Set zsh as default shell
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+  become: yes
