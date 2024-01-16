@@ -1,5 +1,5 @@
 ---
-#--------------Role: default --------------#
+#-------------- Role: default --------------#
 apt_cache_time: 3600
 
 apt_packages:
@@ -16,8 +16,9 @@ ppa_packages:
   # - ppa:atareao/telegram
   # - ppa:ubuntu-mozilla-security/ppa
 
-#--------------Role: vscode --------------#
+#-------------- Role: vscode --------------#
 vscode_extensions:
+  - mhutchie.git-graph  # git graph
   - ms-azuretools.vscode-docker  # docker
   - ms-python.python  # python
   - ms-python.vscode-pylance  # pylance
