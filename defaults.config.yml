@@ -1,7 +1,8 @@
 ---
 #--------------Role: default --------------#
+apt_cache_time: 3600
+
 apt_packages:
-  # - apt-transport-https  # Required for VSCode # TODO: Test
   - curl
   - gh  # for `gh auth login`
   - git
