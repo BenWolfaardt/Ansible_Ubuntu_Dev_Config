@@ -10,6 +10,8 @@
       tags: [default]
     - role: docker
       tags: [docker]
+    - role: discord
+      tags: [discord]
     # TODO: finish implementing
     # - role: nvm
     #   tags: [nvm]
