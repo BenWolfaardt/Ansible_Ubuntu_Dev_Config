@@ -1,9 +1,32 @@
 ---
+- name: Ensure the system can use the HTTPS transport for APT
+  stat: 
+    path: /usr/lib/apt/methods/https
+  register: apt_https_transport
+
+- name: Install HTTPS transport for APT
+  apt: 
+    pkg: apt-transport-https
+    state: installed
+  when: not apt_https_transport.stat.exists
+
+- name: Ensure that Aptitude repositories are up to date
+  apt: 
+    update_cache: yes 
+    cache_valid_time: "{{ apt_cache_time }}"
+
 - name: Install default packages
-  apt:
+  become: true
+  apt: 
     name: "{{ apt_packages }}"
+    state: latest
     update_cache: yes
-  become: yes
+    cache_valid_time: "{{ apt_cache_time }}"
+
+- name: Upgrade installed packages
+  become: true
+  apt: 
+    upgrade: "yes"
 
 # TODO test this?
 # Install ppa apps
