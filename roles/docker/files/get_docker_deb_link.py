@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 url = "https://docs.docker.com/desktop/install/ubuntu/"
 
-def get_docker_deb_download_link(url):
+def get_docker_deb_download_link(url: str) -> None:
     try:
         response = requests.get(url)
         response.raise_for_status()
