@@ -3,9 +3,11 @@
 apt_cache_time: 3600
 
 apt_packages:
+  - ca-certificates
   - curl
   - gh  # for `gh auth login`
   - git
+  - gnupg
   - grep
   - htop
   - openssl
