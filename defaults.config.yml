@@ -20,6 +20,8 @@ ppa_packages:
 
 #-------------- Role: vscode --------------#
 vscode_extensions:
+  - davidanson.vscode-markdownlint  # markdown lint
+  - littlefoxteam.vscode-python-test-adapter  # python test explorer
   - mhutchie.git-graph  # git graph
   - ms-azuretools.vscode-docker  # docker
   - ms-python.python  # python
