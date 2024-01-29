@@ -27,9 +27,3 @@
   become: true
   apt: 
     upgrade: "yes"
-
-# TODO test this?
-# Install ppa apps
-# - apt_repository:
-#    repo: "{{ item }}"
-#  with_items: "{{ ppa_packages }}"

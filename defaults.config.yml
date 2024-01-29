@@ -11,12 +11,7 @@ apt_packages:
   - grep
   - htop
   - openssl
-  # - postgresql@15
   - vim
-
-ppa_packages:
-  # - ppa:atareao/telegram
-  # - ppa:ubuntu-mozilla-security/ppa
 
 #-------------- Role: vscode --------------#
 vscode_extensions:
