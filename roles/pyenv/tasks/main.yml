@@ -21,7 +21,7 @@
 
 - name: Check if Pyenv is already installed
   stat:
-    path: /home/ben/.pyenv
+    path: /home/{{ ansible_user_id }}/.pyenv
   register: pyenv_dir
 
 - name: Install Pyenv

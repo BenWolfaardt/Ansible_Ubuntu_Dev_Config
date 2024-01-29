@@ -5,9 +5,9 @@
 # Already in dotfiles: https://github.com/BenWolfaardt/Dotfiles
 - name: Add poetry to path
   shell: |
-    echo '\n' >> /home/ben/.zshrc
-    echo '# Set PATH for Poetry.' >> /home/ben/.zshrc
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> /home/ben/.zshrc
+    echo '\n' >> /home/{{ ansible_user_id }}/.zshrc
+    echo '# Set PATH for Poetry.' >> /home/{{ ansible_user_id }}/.zshrc
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> /home/{{ ansible_user_id }}/.zshrc
 
 # Add poetry to terminal config
 #   My dotfiles: https://github.com/BenWolfaardt/Dotfiles are automatically pulled with the 
