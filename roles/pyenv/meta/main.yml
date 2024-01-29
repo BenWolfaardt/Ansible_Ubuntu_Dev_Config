@@ -1,5 +1,3 @@
 ---
 dependencies:
   - role: zsh
-  - role: docker
-  # TODO fix dependencies, test with a clean install
