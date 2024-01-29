@@ -1,0 +1,7 @@
+---
+- name: Install DBeaver
+  community.general.snap:
+    name:
+      - dbeaver-ce
+    state: present
+  become: yes
