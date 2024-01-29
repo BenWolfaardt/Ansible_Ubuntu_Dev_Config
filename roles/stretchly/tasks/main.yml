@@ -17,10 +17,17 @@
     state: present
   become: yes
 
+# TODO check permissions
+- name: Ensure Stretchly config directory exists
+  file:
+    path: "/home/{{ ansible_user_id }}/.config/Stretchly"
+    state: directory
+    mode: '0755'
+
 - name: Copy Stretchly configuration file
   copy:
     src: config.json
-    dest: /home/ben/.config/Stretchly/config.json
+    dest: /home/{{ ansible_user_id }}/.config/Stretchly/config.json
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0644'
