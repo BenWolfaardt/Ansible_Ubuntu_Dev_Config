@@ -1,0 +1,7 @@
+---
+- name: Install Postman
+  snap:
+    name:
+      - postman
+    state: present
+  become: yes
