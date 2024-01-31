@@ -22,3 +22,8 @@
   command: code --install-extension {{ item }}
   with_items: "{{ vscode_extensions }}"
   ignore_errors: yes
+
+- name: Create or update VSCode settings.json
+  template:
+    src: settings.json
+    dest: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
