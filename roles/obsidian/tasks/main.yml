@@ -1,48 +1,32 @@
 ---
-- name: Install Obsidian
-  vars:
-    download_directory: "~/Downloads"
-    deb_file: "obsidian_latest.deb"  # temporary name for the downloaded .deb file
+- name: Fetch the latest Obsidian release URL
+  shell: >
+    wget -q -O - https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest |
+    grep 'deb"$' |
+    awk -F'"' '{print $4}'
+  register: obsidian_download_url
+  args:
+    chdir: "{{ download_directory }}"
+  changed_when: False
 
-  tasks:
-    - name: Fetch the latest Obsidian release URL
-      shell: >
-        wget -q -O - https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest |
-        grep 'deb"$' |
-        awk -F'"' '{print $4}'
-      register: obsidian_download_url
-      args:
-        chdir: "{{ download_directory }}"
-      changed_when: False
+- name: Download the Obsidian .deb package
+  get_url:
+    url: "{{ obsidian_download_url.stdout }}"
+    dest: "{{ download_directory }}/{{ deb_file }}"
+    mode: '0644'
 
-    - name: Download the Obsidian .deb package
-      get_url:
-        url: "{{ obsidian_download_url.stdout }}"
-        dest: "{{ download_directory }}/{{ deb_file }}"
-        mode: '0644'
+- name: Install Obsidian .deb package
+  apt:
+    deb: "{{ download_directory }}/{{ deb_file }}"
+  become: yes
 
-    - name: Install Obsidian .deb package
-      apt:
-        deb: "{{ download_directory }}/{{ deb_file }}"
+- name: Ensure all dependencies are installed
+  apt:
+    update_cache: yes
+    # fix_broken: yes  # TODO figure out
+  become: yes
 
-    - name: Ensure all dependencies are installed
-      apt:
-        update_cache: yes
-        fix_broken: yes
-
-    - name: Remove the downloaded .deb file
-      file:
-        path: "{{ download_directory }}/{{ deb_file }}"
-        state: absent
-
-# cd ~/Downloads
-# wget -q -O - https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | grep 'deb"$' | awk -F'"' '{print $4}' | wget -i -
-
-# # 1. wget -q -O - https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest: This command fetches the latest release information from the GitHub API for the Obsidian repository and outputs it to the standard output (-O -).
-# # 2. grep 'deb"$': This filters the output to lines that end with deb".
-# # 3. awk -F'"' '{print $4}': This uses awk to extract the fourth field from each line, assuming fields are delimited by ". This should be the URL of the .deb file.
-# # 4. wget -i -: This final wget command reads URLs from standard input (-i -) and downloads them.
-
-# sudo dpkg -i obsidian_*.deb
-# sudo apt-get install -f
-# # TODO: Delete the .deb file
+- name: Remove the downloaded .deb file
+  file:
+    path: "{{ download_directory }}/{{ deb_file }}"
+    state: absent
