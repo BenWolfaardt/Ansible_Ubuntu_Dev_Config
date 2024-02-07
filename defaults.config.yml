@@ -16,9 +16,12 @@ apt_packages:
 #-------------- Role: vscode --------------#
 vscode_extensions:
   - davidanson.vscode-markdownlint  # markdown lint
+  - equinusocio.vsc-material-theme-icons  # material icon theme
+  # - johnpapa.vscode-peacock  # peacock - add colours to your windows
   - littlefoxteam.vscode-python-test-adapter  # python test explorer
   - mhutchie.git-graph  # git graph
   - ms-azuretools.vscode-docker  # docker
+  - ms-python.debugpy # python debugger
   - ms-python.python  # python
   - ms-python.vscode-pylance  # pylance
   - golang.go  # go
