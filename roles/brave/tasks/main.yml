@@ -1,0 +1,25 @@
+---
+# TODO setting up profiles with Ansible - dynamically with a config
+- name: Download Brave Browser GPG key
+  command: curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+  become: yes
+
+- name: Add Brave Browser repository
+  lineinfile:
+    path: /etc/apt/sources.list.d/brave-browser-release.list
+    line: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
+    create: yes
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update apt repository
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install Brave Browser
+  apt:
+    name: brave-browser
+    state: present
+  become: yes
