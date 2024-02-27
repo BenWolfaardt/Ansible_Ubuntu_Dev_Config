@@ -16,16 +16,25 @@ apt_packages:
 #-------------- Role: vscode --------------#
 vscode_extensions:
   - davidanson.vscode-markdownlint  # markdown lint
+  - dbaeumer.vscode-eslint  # es lint
   - equinusocio.vsc-material-theme-icons  # material icon theme
+  # - github.vscode-github-actions  # github actions
+  - golang.go  # go
+  - juanblanco.solidity  # solidity
   # - johnpapa.vscode-peacock  # peacock - add colours to your windows
   - littlefoxteam.vscode-python-test-adapter  # python test explorer
   - mhutchie.git-graph  # git graph
   - ms-azuretools.vscode-docker  # docker
+  - ms-vscode.live-server  # live html previewer
   - ms-python.debugpy # python debugger
   - ms-python.python  # python
   - ms-python.vscode-pylance  # pylance
-  - golang.go  # go
+  # - peterj.proto  # proto
+  # - rust-lang.rust-analyzer  # rust
   - tamasfe.even-better-toml  # toml linting
+  - tomoki1207.pdf  # pdf viewer
+  # - yoavbls.pretty-ts-errors  # pretty ts errors
+  # - zxh404.vscode-proto3  # proto3
 
 #-------------- Role: geerlingguy.dotfiles --------------#
 # https://github.com/geerlingguy/ansible-role-dotfiles
