@@ -15,9 +15,13 @@
     RUNZSH: 'no'
     CHSH: 'no'
 
+# TODO: Add registers and this only runs if the previous ran and registered
 # Note, requires reboot to take affect
 - name: Set zsh as default shell
   user:
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh
   become: yes
+
+- include_tasks: plugins.yml
+- include_tasks: themes.yml
