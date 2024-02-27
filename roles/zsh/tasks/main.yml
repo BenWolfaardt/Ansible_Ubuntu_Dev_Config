@@ -25,3 +25,8 @@
 
 - include_tasks: plugins.yml
 - include_tasks: themes.yml
+
+- name: Create shortcuts.zsh
+  template:
+    src: shortcuts.zsh
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/shortcuts.zsh"
