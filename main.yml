@@ -6,27 +6,43 @@
     - defaults.config.yml
 
   roles:
-    - role: default
-      tags: [default]
-    - role: docker
-      tags: [docker]
-    - role: discord
-      tags: [discord]
-    # TODO: finish implementing
-    # - role: nvm
+    # - role: default
+    #   tags: [default]
+
+    # - role: bitwarden  # working
+    #   tags: [bitwarden]
+    # - role: brave  # working
+    #   tags: [brave]
+    # - role: dbeaver  # working
+    #   tags: [dbeaver]
+    # - role: discord  # working
+    #   tags: [discord]
+    # - role: docker  # working
+    #   tags: [docker]
+    # - role: nvm  # working
     #   tags: [nvm]
-    # pyenv and zsh are 
-    # pre-requisite - ./roles/poetry/meta/main.yml
-    - role: pyenv
-      tags: [pyenv]
-    - role: poetry  
-      tags: [poetry]
-    - role: stretchly
-      tags: [stretchly]
-    - role: vscode
-      tags: [vscode]
-    - role: zsh
-      tags: [zsh]
-    - role: geerlingguy.dotfiles  # pyenv needs to be installed first
-      when: configure_dotfiles
-      tags: ['dotfiles']
+    # - role: obsidian  # working
+    #   tags: [obsidian]
+    # - role: poetry  # working
+    #   tags: [poetry]    
+    # - role: postman  # working
+    #   tags: [postman]
+    # - role: pyenv  # working
+    #   tags: [pyenv]
+    # - role: slack  # working
+    #   tags: [slack]
+    # - role: snapd  # potentially have as a default - enable by default - how does that affect main
+    #   tags: [snapd]
+    # - role: stretchly  # working
+    #   tags: [stretchly]
+    # - role: teamviewer
+    #   tags: [teamviewer]
+    # - role: vlc  # working
+    #   tags: [vlc]
+    # - role: vscode  # working
+    #   tags: [vscode]
+    # - role: zsh  # working
+    #   tags: [zsh]
+    # - role: geerlingguy.dotfiles  # pyenv needs to be installed first
+    #   when: configure_dotfiles
+    #   tags: ['dotfiles']
