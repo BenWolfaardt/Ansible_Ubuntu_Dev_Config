@@ -1,10 +1,14 @@
 ---
 - name: Install NVM (Node Version Manager)
   # TODO make dynamic
+  #   https://github.com/nvm-sh/nvm?tab=readme-ov-file#manual-install
+  #   Seems like this gets the latest install with
+  #       git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
   shell: |
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   args:
     executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
   environment:
     HOME: "{{ ansible_env.HOME }}"
 
