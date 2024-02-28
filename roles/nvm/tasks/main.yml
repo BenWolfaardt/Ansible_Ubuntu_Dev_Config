@@ -26,14 +26,9 @@
     msg: "NVM installation failed."
   when: nvm_check.stdout != 'nvm'
 
-# Might be needed to run the following command
-# - name: Load NVM script
-#   shell: 'source $HOME/.nvm/nvm.sh'
-#   args:
-#     executable: /bin/bash
-
-# Not tested - but should be straightforward enough
-- name: Install latest Node LTS
-  shell: 'nvm install --lts'
+- name: Load NVM script and install latest Node LTS
+  shell: |
+    source $HOME/.nvm/nvm.sh &&
+    nvm install --lts
   args:
     executable: /bin/bash
