@@ -48,6 +48,7 @@ dotfiles_home: "~"
 dotfiles_files:
   - .gitconfig
   - .gitignore
+  - .p10k.zsh
   - .zprofile
   - .zshenv
   - .zshrc
