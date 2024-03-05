@@ -1,0 +1,17 @@
+---
+- name: Add Solaar PPA repository
+  ansible.builtin.apt_repository:
+    repo: 'ppa:solaar-unifying/stable'
+    state: present
+  become: yes
+
+- name: Ensure that Aptitude repositories are up to date
+  apt: 
+    update_cache: yes 
+    cache_valid_time: "{{ apt_cache_time }}"
+
+- name: Install Solaar
+  apt:
+    name: solaar
+    state: present
+  become: yes
