@@ -6,6 +6,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # Check if pyenv is available
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
+else
+    echo "pyenv is not installed and is required to run this script. \
+        Run the bootstrap script if this is your first time running this repository ensuring you enable the pyenv role. \
+        Exiting."
+    exit 1
 fi
 
 if pyenv versions --bare | grep -q "$PYTHON_VERSION"; then
