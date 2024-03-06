@@ -20,7 +20,8 @@ else
     pyenv install "$PYTHON_VERSION"
 fi
 
-pyenv shell $PYTHON_VERSION
+source "$PYENV_ROOT/bin/pyenv" && pyenv shell "$PYTHON_VERSION"
+export ansible_python_interpreter="$(pyenv which python)"
 
-ansible-playbook -i "localhost," -c local main.yml --ask-become-pass -v
+ansible-playbook -i "localhost," -c local main.yml --ask-become-pass -vv
 exec "$SHELL"
