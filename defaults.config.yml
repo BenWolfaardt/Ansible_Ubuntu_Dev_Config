@@ -1,7 +1,4 @@
 ---
-#-------------- System Default --------------#
-ansible_python_interpreter: $(pyenv which python)
-
 #-------------- Role: default --------------#
 apt_cache_time: 3600
 
