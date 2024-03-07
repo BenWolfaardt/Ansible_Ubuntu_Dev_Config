@@ -20,6 +20,7 @@ vscode_extensions:
   - equinusocio.vsc-material-theme-icons  # material icon theme
   # - github.vscode-github-actions  # github actions
   - golang.go  # go
+  - hashicorp.terraform  # terraform
   - juanblanco.solidity  # solidity
   # - johnpapa.vscode-peacock  # peacock - add colours to your windows
   - littlefoxteam.vscode-python-test-adapter  # python test explorer
