@@ -33,7 +33,7 @@
     #   tags: [slack]
     # - role: snapd  # potentially have as a default - enable by default - how does that affect main
     #   tags: [snapd]
-    # - role: solaar  # to be confirmed
+    # - role: solaar  # working
     #   tags: [solaar]
     # - role: stretchly  # working
     #   tags: [stretchly]
