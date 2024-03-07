@@ -39,6 +39,8 @@
     #   tags: [stretchly]
     # - role: teamviewer
     #   tags: [teamviewer]
+    # - role: terraform  # working
+    #   tags: [terraform]
     # - role: vlc  # working
     #   tags: [vlc]
     # - role: vscode  # working
