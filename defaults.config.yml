@@ -5,12 +5,13 @@ apt_cache_time: 3600
 apt_packages:
   - ca-certificates
   - curl
-  - gh  # for `gh auth login`
+  - gh  # for `gh auth login` - # TODO: results in poor SSH names
   - git
   - gnupg
   - grep
   - htop
   - openssl
+  - tmux
   - vim
 
 #-------------- Role: vscode --------------#
