@@ -12,6 +12,7 @@ apt_packages:
   - htop
   - openssl
   - tmux
+  - whois
   - vim
 
 #-------------- Role: vscode --------------#
