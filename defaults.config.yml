@@ -9,8 +9,11 @@ apt_packages:
   - git
   - gnupg
   - grep
+  - haveged
   - htop
+  - net-tools
   - openssl
+  - postgresql-client
   - tmux
   - whois
   - vim
