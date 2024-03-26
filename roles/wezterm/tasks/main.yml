@@ -1,4 +1,8 @@
 ---
+# TODO update by adding to apt for automatic updates: https://wezfurlong.org/wezterm/install/linux.html
+# fnl config: https://gitlab.com/fennel-scripts/weztermconfig/-/blob/main/wezterm.fnl?ref_type=heads
+#   fnl vs lua for config
+# Config docs: https://wezfurlong.org/wezterm/config/files.html
 - name: Get latest WezTerm release version
   shell: "curl -s https://api.github.com/repos/wez/wezterm/releases/latest | grep tag_name | cut -d '\"' -f 4"
   register: wezterm_version
