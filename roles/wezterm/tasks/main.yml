@@ -1,0 +1,20 @@
+---
+- name: Get latest WezTerm release version
+  shell: "curl -s https://api.github.com/repos/wez/wezterm/releases/latest | grep tag_name | cut -d '\"' -f 4"
+  register: wezterm_version
+
+- name: Download WezTerm deb package
+  get_url:
+    url: "https://github.com/wez/wezterm/releases/download/{{ wezterm_version.stdout }}/wezterm-{{ wezterm_version.stdout }}.Ubuntu22.04.deb"
+    dest: "/tmp/wezterm-{{ wezterm_version.stdout }}.Ubuntu22.04.deb"
+
+- name: Install WezTerm
+  apt:
+    deb: "/tmp/wezterm-{{ wezterm_version.stdout }}.Ubuntu22.04.deb"
+    state: present
+  become: true
+
+- name: Remove downloaded WezTerm deb package
+  file:
+    path: "/tmp/wezterm-{{ wezterm_version.stdout }}.Ubuntu22.04.deb"
+    state: absent
