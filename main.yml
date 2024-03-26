@@ -45,6 +45,8 @@
     #   tags: [vlc]
     # - role: vscode  # working
     #   tags: [vscode]
+    # - role: wezterm  # working
+    #   tags: [wezterm]
     # - role: zsh  # working
     #   tags: [zsh]
     # - role: geerlingguy.dotfiles  # pyenv needs to be installed first
