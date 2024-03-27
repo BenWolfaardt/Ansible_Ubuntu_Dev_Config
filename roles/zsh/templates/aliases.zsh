@@ -37,6 +37,11 @@ alias pyil='pyenv install --list | grep '
 alias pys='pyenv shell'
 alias pywp='pyenv which python'
 
+# system commands
+alias ip4='curl -4 icanhazip.com'
+alias ip6='curl -6 icanhazip.com'
+alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
+
 # terraform
 alias ta='terraform apply'
 alias tp='terraform plan'
