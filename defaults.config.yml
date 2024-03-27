@@ -11,6 +11,7 @@ apt_packages:
   - grep
   - haveged
   - htop
+  - ipv6calc
   - net-tools
   - openssl
   - postgresql-client
