@@ -24,6 +24,15 @@ alias dvl='docker volume ls'
 # See also ~/src/config/dotfiles/.gitconfig
 alias g='git'
 
+# poetry
+alias psi='poetry shell && poetry init'
+
+# pyenv
+alias pyi='pyenv install'
+alias pyil='pyenv install --list | grep '
+alias pys='pyenv shell'
+alias pywp='pyenv which python'
+
 # terraform
 alias ta='terraform apply'
 alias tp='terraform plan'
