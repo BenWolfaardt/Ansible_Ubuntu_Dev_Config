@@ -1,4 +1,8 @@
+# View aliases
+alias va='cat $ans/roles/zsh/templates/aliases.zsh'
+
 # Default oh my zsh
+#   https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet
 
 # Docker
 alias d='docker'
