@@ -23,3 +23,7 @@ alias dvl='docker volume ls'
 # git
 # See also ~/src/config/dotfiles/.gitconfig
 alias g='git'
+
+# terraform
+alias ta='terraform apply'
+alias tp='terraform plan'
