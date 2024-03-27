@@ -30,3 +30,8 @@
   template:
     src: shortcuts.zsh
     dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/shortcuts.zsh"
+
+- name: Create aliases.zsh
+  template:
+    src: aliases.zsh
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/aliases.zsh"
