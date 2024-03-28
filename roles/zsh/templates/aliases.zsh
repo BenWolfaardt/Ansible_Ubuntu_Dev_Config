@@ -43,5 +43,5 @@ alias ip6='curl -6 icanhazip.com'
 alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
 
 # terraform
-alias tfa='terraform apply'
-alias tfp='terraform plan'
+alias tfa='terraform apply -var "do_token=${DO_PAT}"'
+alias tfp='terraform plan -var "do_token=${DO_PAT}"'
