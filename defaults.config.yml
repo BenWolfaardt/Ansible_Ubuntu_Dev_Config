@@ -12,6 +12,7 @@ apt_packages:
   - haveged
   - htop
   - ipv6calc
+  - jq
   - net-tools
   - openssl
   - postgresql-client
