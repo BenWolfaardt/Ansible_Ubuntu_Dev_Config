@@ -29,6 +29,11 @@ alias dvl='docker volume ls'
 alias g='git'
 
 # poetry
+alias pa='poetry add'
+# alias pad='poetry add $1 --group dev'
+function pad() { poetry add $1 --group dev }
+alias plnu='poetry lock --no-update'
+alias pr='poetry remove'
 alias psi='poetry shell && poetry init'
 
 # pyenv
