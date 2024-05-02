@@ -33,6 +33,7 @@ alias pa='poetry add'
 # alias pad='poetry add $1 --group dev'
 function pad() { poetry add $1 --group dev }
 alias plnu='poetry lock --no-update'
+alias pi='poetry install'
 alias pr='poetry remove'
 alias psi='poetry shell && poetry init'
 
