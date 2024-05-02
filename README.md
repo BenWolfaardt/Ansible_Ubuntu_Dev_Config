@@ -1,6 +1,6 @@
 # Ansbile config for my Ubuntu Dev devices
 
-Insperation taken from my other repo: [Ansible_Mac_Dev_Config](https://github.com/BenWolfaardt/Ansible_Mac_Dev_Config)
+Over the years I've formatted and re-installed OSes far too many times... so when I discoverd `Ansible` it was the obvious first thing to automate in my life.
 
 ## TODOs
 
