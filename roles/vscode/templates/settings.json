@@ -13,6 +13,7 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
+    "markdown.experimental.updateLinksOnPaste": true,
     "window.zoomLevel": 1,
     "workbench.colorTheme": "Default Dark Modern",
     "workbench.iconTheme": "eq-material-theme-icons-light"
