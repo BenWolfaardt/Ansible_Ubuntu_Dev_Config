@@ -56,9 +56,16 @@ alias pyvg='pyenv versions | grep'
 alias pywp='pyenv which python'
 
 # system commands
+# ip
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
 alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
+# update software
+alias supd='sudo apt update'
+alias supg='sudo apt upgrade'
+alias supgy='sudo apt upgrade -y'
+alias suu='sudo apt update && sudo apt upgrade'
+alias suuy='sudo apt update && sudo apt upgrade -y'
 
 # terraform
 alias tfa='terraform apply -var "do_token=${DO_PAT}"'
