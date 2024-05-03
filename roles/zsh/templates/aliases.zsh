@@ -48,8 +48,11 @@ alias pcrfr='pre-commit run ruff --files'
 
 # pyenv
 alias pyi='pyenv install'
-alias pyil='pyenv install --list | grep '
+alias pyil='pyenv install --list'
+alias pyilg='pyenv install --list | grep'
 alias pys='pyenv shell'
+alias pyv='pyenv versions'
+alias pyvg='pyenv versions | grep'
 alias pywp='pyenv which python'
 
 # system commands
