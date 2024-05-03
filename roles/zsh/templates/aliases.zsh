@@ -37,6 +37,15 @@ alias pi='poetry install'
 alias pr='poetry remove'
 alias psi='poetry shell && poetry init'
 
+# pre-commit
+alias pci='pre-commit install'
+alias pcra='pre-commit run --all-files'
+alias pcram='pre-commit run mypy --all-files'
+alias pcrar='pre-commit run ruff --all-files'
+alias pcrf='pre-commit run --files'
+alias pcrfm='pre-commit run mypy --files'
+alias pcrfr='pre-commit run ruff --files'
+
 # pyenv
 alias pyi='pyenv install'
 alias pyil='pyenv install --list | grep '
