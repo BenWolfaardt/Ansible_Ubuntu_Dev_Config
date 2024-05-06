@@ -9,5 +9,7 @@ mvp=~/src/bhtechio/mvp
 # Shortcuts to local project directories
 bht=~/src/bhtechio/
 dap=~/src/dapp_university/
+fxf=~/src/fxf/
 ion=~/src/ionsie/
+res=~/src/resources/
 tut=~/src/tuts/
