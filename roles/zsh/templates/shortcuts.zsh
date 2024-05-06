@@ -11,5 +11,6 @@ bht=~/src/bhtechio/
 dap=~/src/dapp_university/
 fxf=~/src/fxf/
 ion=~/src/ionsie/
+int=~/src/interviews/
 res=~/src/resources/
 tut=~/src/tuts/
