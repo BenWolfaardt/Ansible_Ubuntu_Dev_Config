@@ -29,6 +29,8 @@
     #   tags: [postman]
     # - role: pyenv  # working
     #   tags: [pyenv]
+    # - role: rust  # working
+    #   tags: [rust]
     # - role: slack  # working
     #   tags: [slack]
     # - role: snapd  # potentially have as a default - enable by default - how does that affect main
