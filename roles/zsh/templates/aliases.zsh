@@ -45,6 +45,7 @@ alias pcrar='pre-commit run ruff --all-files'
 alias pcrf='pre-commit run --files'
 alias pcrfm='pre-commit run mypy --files'
 alias pcrfr='pre-commit run ruff --files'
+alias peu='poetry env use -- $(pyenv which python)'
 
 # pyenv
 alias pyi='pyenv install'
