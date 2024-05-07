@@ -70,3 +70,8 @@ alias suuy='sudo apt update && sudo apt upgrade -y'
 # terraform
 alias tfa='terraform apply -var "do_token=${DO_PAT}"'
 alias tfp='terraform plan -var "do_token=${DO_PAT}"'
+
+# suffix aliases
+alias -s json=code
+alias -s py=code
+alias -s txt=code
