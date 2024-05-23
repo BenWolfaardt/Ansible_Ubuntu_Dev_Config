@@ -32,8 +32,10 @@ alias g='git'
 alias pa='poetry add'
 # alias pad='poetry add $1 --group dev'
 function pad() { poetry add $1 --group dev }
+alias peu='poetry env use -- $(pyenv which python)'
 alias plnu='poetry lock --no-update'
-alias pi='poetry install'
+alias pins='poetry install'
+alias pint='poetry init'
 alias pr='poetry remove'
 alias psi='poetry shell && poetry init'
 
@@ -45,7 +47,6 @@ alias pcrar='pre-commit run ruff --all-files'
 alias pcrf='pre-commit run --files'
 alias pcrfm='pre-commit run mypy --files'
 alias pcrfr='pre-commit run ruff --files'
-alias peu='poetry env use -- $(pyenv which python)'
 
 # pyenv
 alias pyi='pyenv install'
