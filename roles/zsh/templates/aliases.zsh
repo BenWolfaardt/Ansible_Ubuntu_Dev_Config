@@ -58,6 +58,8 @@ alias pyvg='pyenv versions | grep'
 alias pywp='pyenv which python'
 
 # system commands
+# find
+alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents in current directory
 # ip
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
