@@ -37,6 +37,7 @@ vscode_extensions:
   - ms-python.debugpy # python debugger
   - ms-python.python  # python
   - ms-python.vscode-pylance  # pylance
+  - ms-vscode.makefile-tools  # Makefile Tools
   # - peterj.proto  # proto
   # - rust-lang.rust-analyzer  # rust
   - tamasfe.even-better-toml  # toml linting
