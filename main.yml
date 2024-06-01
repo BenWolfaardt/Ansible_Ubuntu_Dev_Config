@@ -19,6 +19,8 @@
     #   tags: [discord]
     # - role: docker  # working
     #   tags: [docker]
+    # - role: goenv  # working
+    #   tags: [goenv]
     # - role: nvm  # working
     #   tags: [nvm]
     # - role: obsidian  # working
