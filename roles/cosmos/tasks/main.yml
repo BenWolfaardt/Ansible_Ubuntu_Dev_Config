@@ -1,0 +1,17 @@
+---
+- name: Download Ignite CLI installer script
+  get_url:
+    url: "https://get.ignite.com/cli@v0.22.1!"
+    dest: "/tmp/ignite-cli-installer.sh"
+    mode: '0755'
+
+- name: Run Ignite CLI installer script
+  command: "bash /tmp/ignite-cli-installer.sh"
+  become: yes
+  args:
+    creates: "/usr/local/bin/ignite"
+
+- name: Remove Ignite CLI installer script
+  file:
+    path: "/tmp/ignite-cli-installer.sh"
+    state: absent

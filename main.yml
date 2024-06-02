@@ -15,6 +15,8 @@
     #   tags: [brave]
     # - role: dbeaver  # working
     #   tags: [dbeaver]
+    # - role: cosmos  # working
+    #   tags: [cosmos]
     # - role: discord  # working
     #   tags: [discord]
     # - role: docker  # working
