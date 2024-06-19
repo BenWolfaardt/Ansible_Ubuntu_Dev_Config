@@ -30,6 +30,8 @@ alias g='git'
 
 # poetry
 alias pa='poetry add'
+# alias pae='poetry add $1 --extras $2'
+function pae() { poetry add $1 --extras $2 }
 # alias pad='poetry add $1 --group dev'
 function pad() { poetry add $1 --group dev }
 alias peu='poetry env use -- $(pyenv which python)'
