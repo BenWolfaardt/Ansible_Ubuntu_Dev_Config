@@ -43,7 +43,7 @@ vscode_extensions:
   - tamasfe.even-better-toml  # toml linting
   - tomoki1207.pdf  # pdf viewer
   # - yoavbls.pretty-ts-errors  # pretty ts errors
-  # - zxh404.vscode-proto3  # proto3
+  - zxh404.vscode-proto3  # proto3
 
 #-------------- Role: geerlingguy.dotfiles --------------#
 # https://github.com/geerlingguy/ansible-role-dotfiles

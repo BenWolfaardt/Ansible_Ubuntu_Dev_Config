@@ -66,6 +66,9 @@ alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
 alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
+# lsof
+# alias lsofp='sudo lsof -i -P -n | grep $1'
+function lsofp() { sudo lsof -i -P -n | grep ":$1" }
 # update software
 alias supd='sudo apt update'
 alias supg='sudo apt upgrade'
