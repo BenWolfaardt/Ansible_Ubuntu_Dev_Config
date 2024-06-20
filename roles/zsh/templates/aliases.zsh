@@ -60,6 +60,8 @@ alias pyvg='pyenv versions | grep'
 alias pywp='pyenv which python'
 
 # system commands
+# dpkg
+alias dpkgi='sudo dpkg -i'  # followed with package name
 # find
 alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents in current directory
 # ip
