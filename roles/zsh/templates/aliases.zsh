@@ -5,11 +5,11 @@ alias va='cat $ans/roles/zsh/templates/aliases.zsh'
 #   https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet
 
 # apt package manager
-alias supd='sudo apt update'
-alias supg='sudo apt upgrade'
-alias supgy='sudo apt upgrade -y'
-alias suu='sudo apt update && sudo apt upgrade'
-alias suuy='sudo apt update && sudo apt upgrade -y'
+alias aupd='sudo apt update'
+alias aupg='sudo apt upgrade'
+alias aupgy='sudo apt upgrade -y'
+alias auu='sudo apt update && sudo apt upgrade'
+alias auuy='sudo apt update && sudo apt upgrade -y'
 
 # docker
 alias d='docker'
@@ -32,7 +32,7 @@ alias dvi='docker volume inspect'
 alias dvl='docker volume ls'
 
 # dpkg
-alias dpkgi='sudo dpkg -i'  # followed with package name
+alias di='sudo dpkg -i'  # followed with package name
 
 # find
 alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents in current directory
@@ -49,8 +49,8 @@ alias ip6='curl -6 icanhazip.com'
 alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
 
 # lsof
-# alias lsofp='sudo lsof -i -P -n | grep $1'
-function lsofp() { sudo lsof -i -P -n | grep ":$1" }  # check if a specific port is beng used
+# alias lp='sudo lsof -i -P -n | grep $1'
+function lp() { sudo lsof -i -P -n | grep ":$1" }  # check if a specific port is beng used
 
 # nmap
 alias np='sudo nmap -p 22 192.168.0.0/24'  # get ip addresses of machines with ssh port 22 open on local network
