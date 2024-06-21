@@ -4,7 +4,14 @@ alias va='cat $ans/roles/zsh/templates/aliases.zsh'
 # Default oh my zsh
 #   https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet
 
-# Docker
+# apt package manager
+alias supd='sudo apt update'
+alias supg='sudo apt upgrade'
+alias supgy='sudo apt upgrade -y'
+alias suu='sudo apt update && sudo apt upgrade'
+alias suuy='sudo apt update && sudo apt upgrade -y'
+
+# docker
 alias d='docker'
 alias dc='docker compose'
 alias dcd='docker compose down'
@@ -24,9 +31,29 @@ alias dv='docker volume'
 alias dvi='docker volume inspect'
 alias dvl='docker volume ls'
 
+# dpkg
+alias dpkgi='sudo dpkg -i'  # followed with package name
+
+# find
+alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents in current directory
+
 # git
 # See also ~/src/config/dotfiles/.gitconfig
 alias g='git'
+# alias gcnv='git commit "$1" --no-verify'
+function gcnv() { git commit $1 --no-verify }
+
+# ip
+alias ip4='curl -4 icanhazip.com'
+alias ip6='curl -6 icanhazip.com'
+alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
+
+# lsof
+# alias lsofp='sudo lsof -i -P -n | grep $1'
+function lsofp() { sudo lsof -i -P -n | grep ":$1" }  # check if a specific port is beng used
+
+# nmap
+alias np='sudo nmap -p 22 192.168.0.0/24'  # get ip addresses of machines with ssh port 22 open on local network
 
 # poetry
 alias pa='poetry add'
@@ -58,27 +85,6 @@ alias pys='pyenv shell'
 alias pyv='pyenv versions'
 alias pyvg='pyenv versions | grep'
 alias pywp='pyenv which python'
-
-# system commands
-# dpkg
-alias dpkgi='sudo dpkg -i'  # followed with package name
-# find
-alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents in current directory
-# ip
-alias ip4='curl -4 icanhazip.com'
-alias ip6='curl -6 icanhazip.com'
-alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
-# lsof
-# alias lsofp='sudo lsof -i -P -n | grep $1'
-function lsofp() { sudo lsof -i -P -n | grep ":$1" }
-# nmap
-alias np='sudo nmap -p 22 192.168.0.0/24'  # get ip addresses of machines with ssh port 22 open on local network
-# update software
-alias supd='sudo apt update'
-alias supg='sudo apt upgrade'
-alias supgy='sudo apt upgrade -y'
-alias suu='sudo apt update && sudo apt upgrade'
-alias suuy='sudo apt update && sudo apt upgrade -y'
 
 # terraform
 alias tfa='terraform apply -var "do_token=${DO_PAT}"'
