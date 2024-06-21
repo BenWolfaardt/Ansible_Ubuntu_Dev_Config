@@ -23,6 +23,8 @@ alias de='docker exec -it'
 alias din='docker info'
 alias di='docker image'
 alias dil='docker image ls'
+# alias dlf='docker logs "$1" -f'
+function dlf() { docker logs matilde $1 -f }
 alias dn='docker network'
 alias dni='docker network inspect'
 alias dnl='docker network ls'
