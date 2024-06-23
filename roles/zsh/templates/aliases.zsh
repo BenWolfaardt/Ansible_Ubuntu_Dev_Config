@@ -44,8 +44,12 @@ alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents
 # git
 # See also ~/src/config/dotfiles/.gitconfig
 alias g='git'
+
+alias gbd='git branch -D'  # for local branch deletion
 # alias gcnv='git commit "$1" --no-verify'
 function gcnv() { git commit $1 --no-verify }
+alias gco='git checkout --orphan'
+alias gpd='git push origin --delete'  # for remote branch deletion
 
 # ip
 alias ip4='curl -4 icanhazip.com'
