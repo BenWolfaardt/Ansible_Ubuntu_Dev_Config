@@ -5,12 +5,14 @@ alias va='cat $ans/roles/zsh/templates/aliases.zsh'
 #   https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet
 
 # apt package manager
+alias aar='sudo apt autoremove -y'  # removes packages that were automatically installed to satisfy dependencies for other packages and are no longer needed
 alias aupd='sudo apt update'
 alias aupg='sudo apt upgrade'
 alias aupgy='sudo apt upgrade -y'
 alias auu='sudo apt update && sudo apt upgrade'
 alias auuy='sudo apt update && sudo apt upgrade -y'
-
+alias auuay='sudo apt update && sudo apt upgrade -y && autoremove -y'
+ 
 # docker
 alias d='docker'
 alias dc='docker compose'
