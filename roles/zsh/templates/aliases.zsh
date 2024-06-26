@@ -51,6 +51,12 @@ function gcnv() { git commit -m $1 --no-verify }
 alias gco='git checkout --orphan'
 alias gpd='git push origin --delete'  # for remote branch deletion
 
+# grep
+# alias grrn='grep -rn "search_string" /path/to/folder'
+function grrn() { grep -rn "$1" $2}  # search for a string and show line numbers:
+# alias grrni='grep -rn --include=\*.<file_extension> "search_string" /path/to/folder'
+function grrni() { grep -rn --include=\*.$1 "$2" $3}
+
 # ip
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
