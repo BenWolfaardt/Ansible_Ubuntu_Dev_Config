@@ -71,10 +71,12 @@ function pae() { poetry add $1 --extras $2 }
 function pad() { poetry add $1 --group dev }
 alias peu='poetry env use -- $(pyenv which python)'
 alias plnu='poetry lock --no-update'
-alias pins='poetry install'
 alias pint='poetry init'
+alias pins='poetry install'
 alias pr='poetry remove'
-alias psi='poetry shell && poetry init'
+alias ps='poetry shell'
+alias psint='poetry shell && poetry init'
+alias psins='poetry shell && poetry install'
 
 # pre-commit
 alias pci='pre-commit install'
