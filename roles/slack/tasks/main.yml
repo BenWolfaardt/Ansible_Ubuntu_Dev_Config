@@ -1,7 +1,7 @@
 ---
 - name: Install Slack
+  become: yes
   snap:
     name:
       - slack
     state: present
-  become: yes
