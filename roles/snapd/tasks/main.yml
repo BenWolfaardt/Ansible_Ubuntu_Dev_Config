@@ -1,9 +1,17 @@
 ---
+# TODO: use this to check other services
+# - name: Gather service facts
+#   ansible.builtin.service_facts:
 
-- name: Install snapd package
+# - name: Check if snapd service is present
+#   ansible.builtin.set_fact:
+#     snapd_installed: "{{ 'snapd.service' in ansible_facts.services }}"
+
+- name: Ensure snapd is installed and updated to latest version
   become: true
   apt: 
     pkg: snapd
     state: latest
     update_cache: yes
     cache_valid_time: "{{ apt_cache_time }}"
+  # when: not snapd_installed
