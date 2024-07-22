@@ -66,6 +66,9 @@ alias ip6d='curl -s https://ifconfig.me | xargs ipv6calc -q -i -m'  # details
 # alias lp='sudo lsof -i -P -n | grep $1'
 function lp() { sudo lsof -i -P -n | grep ":$1" }  # check if a specific port is beng used
 
+# nautilus
+alias naut='sudo nautilus'
+
 # nmap
 alias np='sudo nmap -p 22 192.168.0.0/24'  # get ip addresses of machines with ssh port 22 open on local network
 
