@@ -12,5 +12,6 @@ dap=~/src/dapp_university/
 fxf=~/src/fxf/
 ion=~/src/ionsie/
 int=~/src/interviews/
+kim=~/src/kima/
 res=~/src/resources/
 tut=~/src/tuts/
