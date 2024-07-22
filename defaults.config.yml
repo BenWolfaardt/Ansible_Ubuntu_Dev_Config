@@ -22,8 +22,8 @@ apt_packages:
   - vim
 
 #-------------- Role: go --------------#
-go_version: "go1.21.12"
-go_tarball: "{{ go_version }}.linux-amd64.tar.gz"
+go_version: "1.21.12"
+go_tarball: "go{{ go_version }}.linux-amd64.tar.gz"
 go_url: "https://go.dev/dl/{{ go_tarball }}"
 
 #-------------- Role: vscode --------------#
