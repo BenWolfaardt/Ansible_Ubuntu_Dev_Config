@@ -1,0 +1,53 @@
+---
+# TODO: run default first?
+# - name: Ensure git is installed
+#   ansible.builtin.package:
+#     name: git
+#     state: present
+
+- name: Check if Go is already installed
+  command: /usr/local/go/bin/go version
+  register: current_go_version
+  ignore_errors: true
+
+- name: Set default values for Go version check if Go is not installed
+  set_fact:
+    go_version: "go1.21.12"
+    go_tarball: "{{ go_version }}.linux-amd64.tar.gz"
+    go_url: "https://go.dev/dl/{{ go_tarball }}"
+  when: current_go_version.failed
+
+# - name: Remove previous Go installation
+#   become: yes
+#   file:
+#     path: /usr/local/go
+#     state: absent
+#   when: go_installed
+
+- name: Download Go archive
+  get_url:
+    url: "{{ go_url }}"
+    dest: /tmp/{{ go_tarball }}
+    mode: '0644'
+  when: current_go_version.failed
+
+- name: Extract Go archive
+  become: yes
+  command: tar -C /usr/local -xzf /tmp/{{ go_tarball }}
+  when: current_go_version.failed
+
+- name: Remove Go tarball
+  file:
+    path: /tmp/{{ go_tarball }}
+    state: absent
+  when: current_go_version.failed
+
+- name: Verify Go installation
+  command: /usr/local/go/bin/go version
+  register: go_verify
+  changed_when: false
+  failed_when: go_verify.rc != 0
+
+- name: Print Go version
+  debug:
+    msg: "Go version installed: {{ go_verify.stdout }}"
