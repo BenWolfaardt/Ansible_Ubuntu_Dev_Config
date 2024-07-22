@@ -15,14 +15,14 @@
     #   tags: [brave]
     # - role: dbeaver  # working
     #   tags: [dbeaver]
-    # - role: cosmos  # working
-    #   tags: [cosmos]
+    - role: cosmos  # working
+      tags: [cosmos]
     # - role: discord  # working
     #   tags: [discord]
     # - role: docker  # working
     #   tags: [docker]
-    # - role: goenv  # working
-    #   tags: [goenv]
+    # - role: go  # working
+    #   tags: [go]
     # - role: nvm  # working
     #   tags: [nvm]
     # - role: obsidian  # working
