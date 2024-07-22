@@ -23,8 +23,6 @@ apt_packages:
 
 #-------------- Role: go --------------#
 go_version: "go1.21.12"
-go_tarball: "{{ go_version }}.linux-amd64.tar.gz"
-go_url: "https://go.dev/dl/{{ go_tarball }}"
 
 #-------------- Role: vscode --------------#
 vscode_extensions:
