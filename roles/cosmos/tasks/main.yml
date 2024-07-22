@@ -23,4 +23,9 @@
   ansible.builtin.debug:
     msg: "Ignite CLI version installed: {{ ignite_cli_version }}"
   when: ignite_version_check.rc == 0
-  
+
+# TODO: think about checking desired version vs current version
+# - name: Uninstall Ignite CLI
+#   command: rm -f "{{ lookup('pipe', 'which ignite') }}"
+#   become: yes
+#   ignore_errors: yes
