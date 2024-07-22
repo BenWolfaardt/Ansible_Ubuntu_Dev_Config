@@ -13,34 +13,47 @@
 - name: Set default values for Go version check if Go is not installed
   set_fact:
     go_version: "{{ go_version }}"
-    go_tarball: "{{ go_tarball }}"
-    go_url: "{{ go_url }}"
+    go_to_install: "{{ go_version }}"
+    installed_go_version: ""
+    go_installed: false
   when: current_go_version.failed
 
-# - name: Remove previous Go installation
-#   become: yes
-#   file:
-#     path: /usr/local/go
-#     state: absent
-#   when: go_installed
+- name: Set temporary fact with regex result
+  set_fact:
+    go_version_matches: "{{ current_go_version.stdout | regex_search('go(\\d+\\.\\d+\\.\\d+)', '\\1') }}"
+  when: not current_go_version.failed
+
+- name: Set facts for existing Go installation
+  set_fact:
+    installed_go_version: "{{ go_version_matches[0] if go_version_matches else '' }}"
+    go_installed: true
+    go_to_install: "{{ go_version }}"
+  when: not current_go_version.failed
+
+- name: Remove previous Go installation
+  become: yes
+  file:
+    path: /usr/local/go
+    state: absent
+  when: go_installed and installed_go_version != go_to_install
 
 - name: Download Go archive
   get_url:
     url: "{{ go_url }}"
     dest: /tmp/{{ go_tarball }}
     mode: '0644'
-  when: current_go_version.failed
+  when: not go_installed or installed_go_version != go_to_install
 
 - name: Extract Go archive
   become: yes
   command: tar -C /usr/local -xzf /tmp/{{ go_tarball }}
-  when: current_go_version.failed
+  when: not go_installed or installed_go_version != go_to_install
 
 - name: Remove Go tarball
   file:
     path: /tmp/{{ go_tarball }}
     state: absent
-  when: current_go_version.failed
+  when: not go_installed or installed_go_version != go_to_install
 
 - name: Verify Go installation
   command: /usr/local/go/bin/go version
