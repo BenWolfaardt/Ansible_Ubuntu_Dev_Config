@@ -6,7 +6,7 @@
 
 - name: Download and install Ignite CLI
   become: yes
-  shell: "curl -sSL https://get.ignite.com/cli@v0.27.2! | bash"
+  shell: "curl -sSL https://get.ignite.com/cli@{{ ignite_version }}! | bash"
   when: not ignite_cli.stat.exists
 
 - name: Verify Ignite CLI installation

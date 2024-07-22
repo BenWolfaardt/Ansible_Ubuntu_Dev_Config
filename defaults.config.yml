@@ -21,6 +21,9 @@ apt_packages:
   - whois
   - vim
 
+#-------------- Role: ignite --------------#
+ignite_version: "v0.27.2"
+
 #-------------- Role: go --------------#
 go_version: "1.21.12"
 go_tarball: "go{{ go_version }}.linux-amd64.tar.gz"
