@@ -13,8 +13,8 @@
 - name: Set default values for Go version check if Go is not installed
   set_fact:
     go_version: "{{ go_version }}"
-    go_tarball: "{{ go_version }}.linux-amd64.tar.gz"
-    go_url: "https://go.dev/dl/{{ go_tarball }}"
+    go_tarball: "{{ go_tarball }}"
+    go_url: "{{ go_url }}"
   when: current_go_version.failed
 
 # - name: Remove previous Go installation
