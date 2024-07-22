@@ -1,17 +1,21 @@
 ---
-- name: Download Ignite CLI installer script
-  get_url:
-    url: "https://get.ignite.com/cli@v0.22.1!"
-    dest: "/tmp/ignite-cli-installer.sh"
-    mode: '0755'
+- name: Check if Ignite CLI is installed
+  stat:
+    path: /usr/local/bin/ignite
+  register: ignite_cli
 
-- name: Run Ignite CLI installer script
-  command: "bash /tmp/ignite-cli-installer.sh"
+- name: Download and install Ignite CLI
   become: yes
-  args:
-    creates: "/usr/local/bin/ignite"
+  shell: "curl -sSL https://get.ignite.com/cli@v0.27.2! | bash"
+  when: not ignite_cli.stat.exists
 
-- name: Remove Ignite CLI installer script
-  file:
-    path: "/tmp/ignite-cli-installer.sh"
-    state: absent
+- name: Verify Ignite CLI installation
+  ansible.builtin.command: /usr/local/bin/ignite version
+  register: ignite_version_check
+  ignore_errors: true
+
+- name: Print Ignite CLI version
+  ansible.builtin.debug:
+    msg: "Ignite CLI version installed: {{ ignite_version_check.stdout }}"
+  when: ignite_version_check.rc == 0
+  
