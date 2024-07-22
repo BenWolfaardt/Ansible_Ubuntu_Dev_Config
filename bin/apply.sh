@@ -25,5 +25,6 @@ export ansible_python_interpreter="$(pyenv which python)"
 
 ansible-playbook -i "localhost," -c local main.yml --ask-become-pass -vv
 exec "$SHELL"
+source $HOME/.zprofile
 
 # TODO remove the wget-log that is generated at the end of this script
