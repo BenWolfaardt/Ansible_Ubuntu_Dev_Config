@@ -14,8 +14,13 @@
   register: ignite_version_check
   ignore_errors: true
 
+- name: Set fact with Ignite CLI version
+  set_fact:
+    ignite_cli_version: "{{ ignite_version_check.stderr | regex_search('Ignite CLI version:\\s+v(\\S+)', '\\1') }}"
+  when: ignite_version_check.rc == 0
+
 - name: Print Ignite CLI version
   ansible.builtin.debug:
-    msg: "Ignite CLI version installed: {{ ignite_version_check.stdout }}"
+    msg: "Ignite CLI version installed: {{ ignite_cli_version }}"
   when: ignite_version_check.rc == 0
   
