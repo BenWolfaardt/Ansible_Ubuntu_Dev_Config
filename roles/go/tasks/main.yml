@@ -18,7 +18,7 @@
     go_installed: false
   when: current_go_version.failed
 
-- name: Set temporary fact with regex result
+- name: Set temporary go version fact if installed
   set_fact:
     go_version_matches: "{{ current_go_version.stdout | regex_search('go(\\d+\\.\\d+\\.\\d+)', '\\1') }}"
   when: not current_go_version.failed
