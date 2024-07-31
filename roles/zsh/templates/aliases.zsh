@@ -40,6 +40,8 @@ alias di='sudo dpkg -i'  # followed with package name
 
 # find
 alias fda='find . -name . -o -prune -exec rm -rf -- {} +'  # delete all contents in current directory
+# alias ff='find . -name "$1"'
+function ff() { find . -name "$1" }  # find a file by recursively looking in current directory
 
 # git
 # See also ~/src/config/dotfiles/.gitconfig
