@@ -15,6 +15,7 @@ alias auuay='sudo apt update && sudo apt upgrade -y && autoremove -y'
  
 # docker
 alias d='docker'
+
 alias dc='docker compose'
 alias dcd='docker compose down'
 alias dcdd='docker compose down -d'
@@ -26,7 +27,7 @@ alias din='docker info'
 alias di='docker image'
 alias dil='docker image ls'
 # alias dlf='docker logs "$1" -f'
-function dlf() { docker logs matilde $1 -f }
+function dlf() { docker logs $1 -f }
 alias dn='docker network'
 alias dni='docker network inspect'
 alias dnl='docker network ls'
