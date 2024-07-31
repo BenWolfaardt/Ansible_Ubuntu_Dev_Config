@@ -59,6 +59,14 @@ function grrn() { grep -rn "$1" $2}  # search for a string and show line numbers
 # alias grrni='grep -rn --include=\*.<file_extension> "search_string" /path/to/folder'
 function grrni() { grep -rn --include=\*.$1 "$2" $3}
 
+# ignite
+alias i='ignite'
+
+alias icb='ignite chain build'
+alias ics='ignite chain serve'
+alias icsr='ignite chain serve --reset-once'
+alias igp='ignite generate proto-go'
+
 # ip
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
