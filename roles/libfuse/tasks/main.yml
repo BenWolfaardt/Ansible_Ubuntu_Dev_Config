@@ -1,0 +1,82 @@
+---
+- name: Ensure required packages are installed
+  become: true
+  apt:
+    name:
+      # - build-essential
+      - meson
+      - ninja-build
+      - signify-openbsd
+      # - python3-pip
+      # - python3-pytest
+    state: present
+    update_cache: yes
+
+- name: Get the latest libfuse release tag from GitHub
+  uri:
+    url: "https://api.github.com/repos/libfuse/libfuse/releases/latest"
+    return_content: yes
+  register: latest_release
+
+- name: Set the latest release version
+  set_fact:
+    libfuse_version: "{{ latest_release.json.tag_name }}"
+
+- name: Download the latest libfuse tarball
+  get_url:
+    url: "https://github.com/libfuse/libfuse/releases/download/{{ libfuse_version }}/{{ libfuse_version }}.tar.gz"
+    dest: "/tmp/{{ libfuse_version }}.tar.gz"
+
+- name: Download the .sig file for the tarball
+  get_url:
+    url: "https://github.com/libfuse/libfuse/releases/download/{{ libfuse_version }}/{{ libfuse_version }}.tar.gz.sig"
+    dest: "/tmp/{{ libfuse_version }}.tar.gz.sig"
+
+# TODO: get the pub keys somewhere to confirm the file
+# - name: Verify the tarball using signify
+#   shell: |
+#     cd /tmp && signify-openbsd -V -m /tmp/{{ libfuse_version }}.tar.gz -p /tmp/{{ libfuse_version }}.pub
+#   args:
+#     executable: /bin/bash
+#   register: signify_result
+#   failed_when: signify_result.rc != 0
+
+- name: Extract the libfuse tarball
+  unarchive:
+    src: "/tmp/{{ libfuse_version }}.tar.gz"
+    dest: /tmp
+    remote_src: yes
+
+- name: Create build directory
+  file:
+    path: "/tmp/{{ libfuse_version }}/build"
+    state: directory
+
+- name: Configure Meson build
+  command: meson setup ..
+  args:
+    chdir: "/tmp/{{ libfuse_version }}/build"
+
+- name: Build libfuse using Ninja
+  command: ninja
+  args:
+    chdir: "/tmp/{{ libfuse_version }}/build"
+
+# TODO: fix pytest things for incorrect path start to ansible-playbook
+# - name: Run tests for libfuse
+#   command: python3 -m pytest test/
+#   args:
+#     chdir: "/tmp/{{ libfuse_version }}/build"
+
+- name: Install libfuse to system directories
+  become: true
+  command: ninja install
+  args:
+    chdir: "/tmp/{{ libfuse_version }}/build"
+
+- name: Set util/fusermount3 to setuid root
+  file:
+    path: "/usr/local/bin/fusermount3"
+    owner: root
+    group: root
+    mode: "4755"

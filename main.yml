@@ -23,6 +23,8 @@
     #   tags: [docker]
     # - role: go  # working
     #   tags: [go]
+    # - role: libfuse  # working
+    #   tags: [libfuse]
     # - role: nvm  # working
     #   tags: [nvm]
     # - role: obsidian  # working
