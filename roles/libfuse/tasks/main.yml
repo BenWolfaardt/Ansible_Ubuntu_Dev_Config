@@ -3,12 +3,9 @@
   become: true
   apt:
     name:
-      # - build-essential
       - meson
       - ninja-build
       - signify-openbsd
-      # - python3-pip
-      # - python3-pytest
     state: present
     update_cache: yes
 
