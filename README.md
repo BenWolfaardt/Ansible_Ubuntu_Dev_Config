@@ -4,6 +4,7 @@ Over the years I've formatted and re-installed OSes far too many times... so whe
 
 ## TODOs
 
+- See snapd tasks for tips on how to check things before re-installing unecessarily
 - Update bootstrap to have the pyenv setup - wait, we can't as pyenv is installed by Ansible
 - Update my dotfiles to have the poetry config and have a branch for different OS's
 - Check if things are already installed before re-running them in full
@@ -20,3 +21,6 @@ Over the years I've formatted and re-installed OSes far too many times... so whe
 
 - https://github1s.com/lvancrayelynghe/ansible-ubuntu/
 - https://github1s.com/sys0dm1n/ansible-ubuntu-desktop/
+
+
+ANSIBLE_PYTHON_INTERPRETER=/home/ben/.pyenv/versions/3.12.8/bin/python ansible-playbook -i "localhost," -c local main.yml --ask-become-pass -vv
