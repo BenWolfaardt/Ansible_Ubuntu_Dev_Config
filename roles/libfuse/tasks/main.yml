@@ -1,4 +1,12 @@
 ---
+# The following additional packages will be installed:
+#   libfuse2
+# The following packages will be REMOVED:
+#   fuse3 gnome-control-center gnome-remote-desktop
+#   gnome-shell-extension-desktop-icons-ng gvfs-fuse ntfs-3g ubuntu-desktop
+#   ubuntu-desktop-minimal xdg-desktop-portal xdg-desktop-portal-gnome
+#   xdg-desktop-portal-gtk
+
 - name: Ensure required packages are installed
   become: true
   apt:
