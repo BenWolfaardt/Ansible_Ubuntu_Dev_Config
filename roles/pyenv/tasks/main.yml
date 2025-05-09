@@ -24,6 +24,11 @@
     path: /home/{{ ansible_user_id }}/.pyenv
   register: pyenv_dir
 
+  # TODO: if already installed try to update: 
+  # Uninstall first to ensure stable release or check update flags: 
+  # rm -rf $(pyenv root)
+  # command: pyenv update
+
 - name: Install Pyenv
   shell: curl https://pyenv.run | bash
   when: not pyenv_dir.stat.exists
