@@ -1,5 +1,5 @@
 #!/bin/sh
-PYTHON_VERSION="3.12.1"
+PYTHON_VERSION="3.12.8"
 PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
